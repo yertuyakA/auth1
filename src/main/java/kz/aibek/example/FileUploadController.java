@@ -18,7 +18,7 @@ public class FileUploadController {
                 return "Не удалось загрузить " + name + " в " + name + " => " + e.getMessage();
             }
         }else{
-            return "Файл "+name+" пустой, загрузить не получится";
+            return "Файл "+name+" пустой";
         }
     }
 }
