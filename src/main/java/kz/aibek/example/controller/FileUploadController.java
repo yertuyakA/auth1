@@ -35,12 +35,11 @@ public class FileUploadController {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER+file.getOriginalFilename());
             Files.write(path, bytes);
-            redirectAttributes.addFlashAttribute("message", "You succesfully uploaded " + file.getOriginalFilename()+"'");
+            redirectAttributes.addFlashAttribute("message", "You succesfully uploaded " + file.getOriginalFilename());
         }catch (IOException e){
             e.printStackTrace();
         }
         return "redirect:/uploadStatus";
-
     }
 
     @GetMapping("/uploadStatus")
