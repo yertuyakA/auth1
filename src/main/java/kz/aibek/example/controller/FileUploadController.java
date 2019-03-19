@@ -19,6 +19,9 @@ import java.nio.file.Paths;
 public class FileUploadController {
 
     private static String UPLOADED_FOLDER = "/home/aibek/";
+    protected static String filename = "";
+
+
 
     @GetMapping("/")
     public String index(){
@@ -36,10 +39,22 @@ public class FileUploadController {
             Path path = Paths.get(UPLOADED_FOLDER+file.getOriginalFilename());
             Files.write(path, bytes);
             redirectAttributes.addFlashAttribute("message", "You succesfully uploaded " + file.getOriginalFilename());
+            filename = UPLOADED_FOLDER + file.getOriginalFilename();
+            writeTrueInDB();
         }catch (IOException e){
             e.printStackTrace();
+            writeFalseInDB();
         }
         return "redirect:/uploadStatus";
+    }
+
+
+    //write status of uploading files in DB
+    private void writeTrueInDB() {
+
+    }
+    private void writeFalseInDB(){
+
     }
 
     @GetMapping("/uploadStatus")
